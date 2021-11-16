@@ -22,7 +22,7 @@ public class Calculater {
             num1 = sc.nextInt();
             System.out.println("Enter the number2: ");
             num2 = sc.nextInt();
-            System.out.println("Enter the operator: ");
+            System.out.println("Select one of the operator as +,-,*,/: ");
             operator = sc.next().charAt(0);
 
             //calls function to calculate as per given value and operator
@@ -34,7 +34,9 @@ public class Calculater {
             //converts user input to upper case
             flagToContinue=Character.toUpperCase(flagToContinue);
         }
-
+        if(flagToContinue == 'N'){
+            System.out.println("Thanks for using calculator program.");
+        }
 
     }
     static void calculateOutput(int num1,int num2,char operator){

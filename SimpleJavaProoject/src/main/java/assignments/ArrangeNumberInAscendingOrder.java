@@ -15,11 +15,9 @@ public class ArrangeNumberInAscendingOrder {
         System.out.println("Enter the number: ");
         input = sc.nextLine();
 
-        //counts the digits in the number string
-        countDigit = countDigitInNumber(input);
 
         //converts string into arrays
-        numArray = numberInArray(input,countDigit);
+        numArray = numberInArray(input);
 
         //arrange the arrays into ascending order
         numArray = arrangeNumberInAscendingOrder(numArray);
@@ -52,9 +50,10 @@ public class ArrangeNumberInAscendingOrder {
     }
 
     //slice the number and store into array
-    static int[] numberInArray(String input,int length){
+    static int[] numberInArray(String input){
         int singleDigit=0;
-        int [] array = new int[length];
+
+        int [] array = new int[input.length()];
             for(int i=0;i<input.length();i++){
                 //parse the number in the string into integer number
                 singleDigit = Integer.parseInt(String.valueOf(input.charAt(i)));
@@ -64,9 +63,5 @@ public class ArrangeNumberInAscendingOrder {
         return array;
     }
 
-    //counts the number of digits in a number string
-    static int countDigitInNumber(String input){
-        int count =0;
-        return count =input.length();
-    }
+
 }
