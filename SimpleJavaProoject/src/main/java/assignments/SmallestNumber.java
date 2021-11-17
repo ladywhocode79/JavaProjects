@@ -28,16 +28,15 @@ public class SmallestNumber {
         int num4 = sc.nextInt();
 
         //Check if num1 is smaller then num2 or num2 is smaller then num1
+        min1=num2;
+        min2=num4;
         if (num1 < num2)
             min1 = num1;
-        else
-            min1=num2;
+
 
         //Check if num3 is smaller then num4 or num4 is smaller then num3
         if (num3 < num4)
             min2 = num3;
-        else
-            min2 =num4;
 
         //Check if min1 is smaller then min2 or min2 is smaller then min1
         if(min1 <min2)
