@@ -3,22 +3,26 @@ package assignments.encapsulation;
 Should use private variables for the department name and college . (Apply encapsulation)*/
 
 public class College {
+    //set private variables
     private String collegeName;
-    private String departmentName;
+    private String [] departmentName;
 
+    //getter method
+    public String[] getDepartmentName() {
+        return departmentName;
+    }
+    //setter method
+    public void setDepartmentName(String[] departmentName) {
+        this.departmentName = departmentName;
+    }
+    //getter method
     public String getCollegeName() {
         return collegeName;
     }
-
+    //setter method
     public void setCollegeName(String collegeName) {
         this.collegeName = collegeName;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
 }
