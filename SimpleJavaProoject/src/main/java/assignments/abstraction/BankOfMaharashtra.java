@@ -3,17 +3,16 @@ package assignments.abstraction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankOfBaroda extends Bank{
+public class BankOfMaharashtra extends Bank{
     protected List<Integer> denomination = new ArrayList<>();
-    BankOfBaroda(){
+    BankOfMaharashtra(){
+        denomination.add(10);
+        denomination.add(20);
         denomination.add(100);
-        denomination.add(1000);
-        denomination.add(500);
     }
-
     //implementation of abstract method from Bank class
     public List<Integer> getDenomination() {
-        System.out.println("Denomination list for Bank of Baroda is as follows ");
+        System.out.println("Denomination list for Bank of Maharashtra is as follows ");
         return denomination;
     }
 }
