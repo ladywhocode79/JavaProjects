@@ -22,9 +22,9 @@ public class HomePage {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
-    public void verifyLoginSuccessfull(){
+    public void verifyLoginSuccessful(){
         String expectedMessage="Logged in successfully";
-       String sucessMessage= driver.findElement(By.cssSelector("div[class=\"alert alert-success\"]")).getText();
-        Assert.assertEquals(sucessMessage,expectedMessage,"Failed in comparison");
+       String successMessage= driver.findElement(By.cssSelector("div[class=\"alert alert-success\"]")).getText();
+       Assert.assertEquals(successMessage,expectedMessage,"Login message didn't match");
     }
 }

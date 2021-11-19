@@ -10,9 +10,6 @@ public class ShoppingCartPage {
     }
 
     public void checkOut(){
-        driver.findElement(By.cssSelector("td[class=\"lead\"]"));
-       // System.out.println("Total is " +total);
-
         //click on checkout
         driver.findElement(By.id("checkout-link")).click();
 

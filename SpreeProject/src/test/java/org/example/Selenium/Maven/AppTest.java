@@ -2,17 +2,7 @@ package org.example.Selenium.Maven;
 
 
 import POM.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Unit test for spree App.
@@ -49,7 +39,7 @@ public class AppTest extends BaseTest
         homePage.clickOnLogin();
         loginPage.loginToSpree(email,password);
         //verify the login successfull message
-        homePage.verifyLoginSuccessfull();
+        homePage.verifyLoginSuccessful();
 
         //select category from side bar
         categoryPage.searchNSelectInCategory();
@@ -84,8 +74,8 @@ public class AppTest extends BaseTest
         //click on login link on home page
         homePage.clickOnLogin();
         loginPage.loginToSpree(email,password);
-        //verify the login successfull message
-        homePage.verifyLoginSuccessfull();
+        //verify the login successful message
+        homePage.verifyLoginSuccessful();
 
         //select category from dropdown
         categoryPage.selectCategoryFromDropDown();
@@ -99,7 +89,7 @@ public class AppTest extends BaseTest
         //select total on checkout page and return total
         shoppingCartPage.checkOut();
         String orderTotal= checkOutPage.returnOrderTotalValue();
-
+        //printing actual total
         System.out.println("Actual Order total : " +orderTotal);
 
      /*   driver.findElement(By.cssSelector("span[title=\"Ruby on Rails Tote\"]")).click();

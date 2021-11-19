@@ -19,12 +19,11 @@ public class CategoryPage {
         driver.findElement(By.cssSelector("a[href=\"/t/bags\"]")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-
     }
     public void selectFromProducList(){
         //select from category
         driver.findElement(By.cssSelector("span[title=\"Ruby on Rails Tote\"]")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
     }
     public void selectCategoryFromDropDown(){
         //to select items from drop down and click on search
@@ -34,7 +33,6 @@ public class CategoryPage {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //find the search button anc click to search
         driver.findElement(By.cssSelector("input[value='Search']")).click();;
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
 }
