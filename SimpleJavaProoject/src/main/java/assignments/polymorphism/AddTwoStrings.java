@@ -1,7 +1,7 @@
 package assignments.polymorphism;
 
-//Child class extending base class AddTwoNumbers
-public class AddTwoStrings extends AddTwoNumbers {
+
+public class AddTwoStrings  {
 
     public void addTwoVariables(String string1, String string2) {
         int sum;
