@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.concurrent.TimeUnit;
 
 public class CategoryPage {
-    public void SearchNSelectInCategory(WebDriver driver){
+    WebDriver driver;
+
+    public void searchNSelectInCategory(WebDriver driver){
         //search in category
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //create web element for Category side room
@@ -17,12 +19,12 @@ public class CategoryPage {
 
 
     }
-    public void SelectFromProducList(WebDriver driver){
+    public void selectFromProducList(WebDriver driver){
         //select from category
         driver.findElement(By.cssSelector("span[title=\"Ruby on Rails Tote\"]")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
-    public void SelectCategoryFromDropDown(WebDriver driver){
+    public void selectCategoryFromDropDown(WebDriver driver){
         //to select items from drop down and click on search
         WebElement dropdown = driver.findElement(By.id("taxon"));
         Select select = new Select(dropdown);

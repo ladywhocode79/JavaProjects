@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Unit test for spree App.
  */
-public class AppTest 
+public class AppTest extends BaseTest
 {
-    //declare webdriver object
+ /*   //declare webdriver object
     WebDriver driver;
     @BeforeMethod
     public void setupDriverAndOpenBrowser(){
@@ -33,7 +33,7 @@ public class AppTest
         driver.manage().window().maximize();
 
     }
-
+*/
     public void useSideBarToSelectProduct(){
         HomePage homePage = new HomePage();
         LoginPage loginPage = new LoginPage();
@@ -46,22 +46,22 @@ public class AppTest
         String email = "simple12@dd.com";
         String password = "2345678";
         //click on login link on home page
-        homePage.ClickOnLogin(driver);
-        loginPage.LoginToSpree(driver,email,password);
+        homePage.clickOnLogin(driver);
+        loginPage.loginToSpree(driver,email,password);
         //verify the login successfull message
-        homePage.VerifyLoginSuccessfull(driver);
+        homePage.verifyLoginSuccessfull(driver);
 
         //select category from side bar
-        categoryPage.SearchNSelectInCategory(driver);
+        categoryPage.searchNSelectInCategory(driver);
         //search product,select and click on product name link
-        categoryPage.SelectFromProducList(driver);
+        categoryPage.selectFromProducList(driver);
 
         //product detail page update the quantity and click add to cart
-        productDetailPage.AddQuantityNAddToCart(driver);
+        productDetailPage.addQuantityNAddToCart(driver);
 
         //select total on checkout page and return total
-        shoppingCartPage.CheckOut(driver);
-        String orderTotal =checkOutPage.ReturnOrderTotalValue(driver);
+        shoppingCartPage.checkOut(driver);
+        String orderTotal =checkOutPage.returnOrderTotalValue(driver);
         System.out.println("Actual Order total : " +orderTotal);
 
 
@@ -82,23 +82,23 @@ public class AppTest
         String email = "simple12@dd.com";
         String password = "2345678";
         //click on login link on home page
-        homePage.ClickOnLogin(driver);
-        loginPage.LoginToSpree(driver,email,password);
+        homePage.clickOnLogin(driver);
+        loginPage.loginToSpree(driver,email,password);
         //verify the login successfull message
-        homePage.VerifyLoginSuccessfull(driver);
+        homePage.verifyLoginSuccessfull(driver);
 
         //select category from dropdown
-        categoryPage.SelectCategoryFromDropDown(driver);
+        categoryPage.selectCategoryFromDropDown(driver);
 
         //search product,select and click on product name link
-        categoryPage.SelectFromProducList(driver);
+        categoryPage.selectFromProducList(driver);
 
         //product detail page update the quantity and click add to cart
-        productDetailPage.AddQuantityNAddToCart(driver);
+        productDetailPage.addQuantityNAddToCart(driver);
 
         //select total on checkout page and return total
-        shoppingCartPage.CheckOut(driver);
-        String orderTotal= checkOutPage.ReturnOrderTotalValue(driver);
+        shoppingCartPage.checkOut(driver);
+        String orderTotal= checkOutPage.returnOrderTotalValue(driver);
 
         System.out.println("Actual Order total : " +orderTotal);
 
@@ -123,12 +123,12 @@ public class AppTest
         Assert.assertEquals(orderTotal,expectedTotal,"Failed in comparison");
 */
     }
-    @AfterMethod
+   /* @AfterMethod
     public void closeBrowser(){
         //close the browser
        driver.close();
 
        // driver.quit();
-    }
+    }*/
 }
 

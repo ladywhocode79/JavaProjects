@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    public void LoginToSpree(WebDriver driver,String email,String password){
+    public void loginToSpree(WebDriver driver,String email,String password){
         //email
         driver.findElement(By.id("spree_user_email")).sendKeys(email);
         //password..

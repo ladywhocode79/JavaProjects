@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class CheckOutPage {
-    public String ReturnOrderTotalValue(WebDriver driver){
+    public String returnOrderTotalValue(WebDriver driver){
 
         String orderTotal = driver.findElement(By.cssSelector("span[id=\"summary-order-total\"]")).getText();
         //assert on cart total should be equal to expected result
