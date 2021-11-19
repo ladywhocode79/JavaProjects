@@ -5,10 +5,12 @@ package assignments.polymorphism;
 public class AddTwoIntegersAndStrings {
     public static void main(String[] args) {
         //object of child class
-        AddTwoStrings addTwoStrings = new AddTwoStrings();
-        //object of child class calling method of child class as parameter type is String
-        addTwoStrings.addTwoVariables("Sonal ","Singh");
-        addTwoStrings.addTwoVariables("2","3");
+        AddTwoIntegers addTwoIntegers = new AddTwoIntegers();
+        //object of child class calling method of parent class as parameter type as String
+        addTwoIntegers.addTwoVariables("Sonal ","Singh");
+        addTwoIntegers.addTwoVariables("2","3");
+        //calls functions from AddTwoIntegers class
+        addTwoIntegers.addTwoVariables(4,5);
 
     }
 }
