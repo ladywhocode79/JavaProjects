@@ -9,16 +9,20 @@ import org.testng.Assert;
 import java.util.concurrent.TimeUnit;
 
 public class HomePage {
-    public void loginSucessfull(WebDriver driver){
+    WebDriver driver;
+    public HomePage(WebDriver driver){
+        this.driver=driver;
+    }
+    public void loginSucessfull(){
 
     }
-    public void clickOnLogin(WebDriver driver){
+    public void clickOnLogin(){
         //click on login button on home
         driver.findElement(By.cssSelector("[class=\"nav-link text-white\"]")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
-    public void verifyLoginSuccessfull(WebDriver driver){
+    public void verifyLoginSuccessfull(){
         String expectedMessage="Logged in successfully";
        String sucessMessage= driver.findElement(By.cssSelector("div[class=\"alert alert-success\"]")).getText();
         Assert.assertEquals(sucessMessage,expectedMessage,"Failed in comparison");

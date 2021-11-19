@@ -35,33 +35,33 @@ public class AppTest extends BaseTest
     }
 */
     public void useSideBarToSelectProduct(){
-        HomePage homePage = new HomePage();
-        LoginPage loginPage = new LoginPage();
-        CategoryPage categoryPage = new CategoryPage();
-        ProductDetailPage productDetailPage = new ProductDetailPage();
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        CheckOutPage checkOutPage = new CheckOutPage();
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        CategoryPage categoryPage = new CategoryPage(driver);
+        ProductDetailPage productDetailPage = new ProductDetailPage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        CheckOutPage checkOutPage = new CheckOutPage(driver);
 
         //variables to store email and password
         String email = "simple12@dd.com";
         String password = "2345678";
         //click on login link on home page
-        homePage.clickOnLogin(driver);
-        loginPage.loginToSpree(driver,email,password);
+        homePage.clickOnLogin();
+        loginPage.loginToSpree(email,password);
         //verify the login successfull message
-        homePage.verifyLoginSuccessfull(driver);
+        homePage.verifyLoginSuccessfull();
 
         //select category from side bar
-        categoryPage.searchNSelectInCategory(driver);
+        categoryPage.searchNSelectInCategory();
         //search product,select and click on product name link
-        categoryPage.selectFromProducList(driver);
+        categoryPage.selectFromProducList();
 
         //product detail page update the quantity and click add to cart
-        productDetailPage.addQuantityNAddToCart(driver);
+        productDetailPage.addQuantityNAddToCart();
 
         //select total on checkout page and return total
-        shoppingCartPage.checkOut(driver);
-        String orderTotal =checkOutPage.returnOrderTotalValue(driver);
+        shoppingCartPage.checkOut();
+        String orderTotal =checkOutPage.returnOrderTotalValue();
         System.out.println("Actual Order total : " +orderTotal);
 
 
@@ -71,34 +71,34 @@ public class AppTest extends BaseTest
     //flow to select category from drop down list and search
     public void loginNAddProductToCart()
     {
-        HomePage homePage = new HomePage();
-        LoginPage loginPage = new LoginPage();
-        CategoryPage categoryPage = new CategoryPage();
-        ProductDetailPage productDetailPage = new ProductDetailPage();
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        CheckOutPage checkOutPage = new CheckOutPage();
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        CategoryPage categoryPage = new CategoryPage(driver);
+        ProductDetailPage productDetailPage = new ProductDetailPage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        CheckOutPage checkOutPage = new CheckOutPage(driver);
 
         //variables to store email and password
         String email = "simple12@dd.com";
         String password = "2345678";
         //click on login link on home page
-        homePage.clickOnLogin(driver);
-        loginPage.loginToSpree(driver,email,password);
+        homePage.clickOnLogin();
+        loginPage.loginToSpree(email,password);
         //verify the login successfull message
-        homePage.verifyLoginSuccessfull(driver);
+        homePage.verifyLoginSuccessfull();
 
         //select category from dropdown
-        categoryPage.selectCategoryFromDropDown(driver);
+        categoryPage.selectCategoryFromDropDown();
 
         //search product,select and click on product name link
-        categoryPage.selectFromProducList(driver);
+        categoryPage.selectFromProducList();
 
         //product detail page update the quantity and click add to cart
-        productDetailPage.addQuantityNAddToCart(driver);
+        productDetailPage.addQuantityNAddToCart();
 
         //select total on checkout page and return total
-        shoppingCartPage.checkOut(driver);
-        String orderTotal= checkOutPage.returnOrderTotalValue(driver);
+        shoppingCartPage.checkOut();
+        String orderTotal= checkOutPage.returnOrderTotalValue();
 
         System.out.println("Actual Order total : " +orderTotal);
 

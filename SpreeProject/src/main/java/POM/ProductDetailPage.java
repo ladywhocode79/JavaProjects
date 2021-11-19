@@ -4,7 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ProductDetailPage {
-    public void addQuantityNAddToCart(WebDriver driver){
+    WebDriver driver;
+    public ProductDetailPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void addQuantityNAddToCart(){
         //try using xpath,
         driver.findElement(By.xpath("//*[@id='quantity']")).clear();
         // driver.findElement(By.id("quantity")).clear();

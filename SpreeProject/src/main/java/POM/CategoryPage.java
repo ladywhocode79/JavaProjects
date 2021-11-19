@@ -9,8 +9,10 @@ import java.util.concurrent.TimeUnit;
 
 public class CategoryPage {
     WebDriver driver;
-
-    public void searchNSelectInCategory(WebDriver driver){
+    public CategoryPage(WebDriver driver){
+        this.driver =driver;
+    }
+    public void searchNSelectInCategory(){
         //search in category
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //create web element for Category side room
@@ -19,12 +21,12 @@ public class CategoryPage {
 
 
     }
-    public void selectFromProducList(WebDriver driver){
+    public void selectFromProducList(){
         //select from category
         driver.findElement(By.cssSelector("span[title=\"Ruby on Rails Tote\"]")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
-    public void selectCategoryFromDropDown(WebDriver driver){
+    public void selectCategoryFromDropDown(){
         //to select items from drop down and click on search
         WebElement dropdown = driver.findElement(By.id("taxon"));
         Select select = new Select(dropdown);

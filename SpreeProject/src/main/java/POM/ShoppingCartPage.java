@@ -4,7 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ShoppingCartPage {
-    public void checkOut(WebDriver driver){
+    WebDriver driver;
+    public ShoppingCartPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void checkOut(){
         driver.findElement(By.cssSelector("td[class=\"lead\"]"));
        // System.out.println("Total is " +total);
 
