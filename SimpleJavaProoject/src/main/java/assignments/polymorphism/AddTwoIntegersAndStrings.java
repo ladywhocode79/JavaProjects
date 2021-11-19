@@ -7,8 +7,8 @@ public class AddTwoIntegersAndStrings {
         //object of child class
         AddTwoStrings addTwoStrings = new AddTwoStrings();
         //object of child class calling method of child class as parameter type is String
-        addTwoStrings.addTwoVariables("abc","ads");
-        //object of child class calling method of parent class as parameter type is Int
-        addTwoStrings.addTwoVariables(3,5);
+        addTwoStrings.addTwoVariables("Sonal ","Singh");
+        addTwoStrings.addTwoVariables("2","3");
+
     }
 }
