@@ -33,10 +33,10 @@ public class LargestNumbers {
     }
     static int returnLargestNumber(int number1,int number2,int number3){
         int largestNumber = number3;
-        if(number1>number2 && number1 >number3)
-            largestNumber = number1;
-        else if(number2>number3)
+        if(number1<number2)
             largestNumber = number2;
+         if(number2<number3)
+            largestNumber = number3;
 
         return largestNumber;
     }

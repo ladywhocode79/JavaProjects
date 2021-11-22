@@ -8,5 +8,9 @@ public class MasterBedRoom extends Home{
         this.numberOfLights = noOfLightsInARoom;
         this.roomName ="Master Bed room";
     }
+    //to give number of lights
+    public void getNumberOfLights() {
+        System.out.println("Number of lights in "+roomName+" is "+numberOfLights);
+    }
 
 }

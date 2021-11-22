@@ -8,5 +8,8 @@ public class DrawingRoom extends Home{
         this.numberOfLights = noOfLightsInARoom;
         this.roomName ="Drawing Room";
     }
-
+    //to give number of lights
+    public void getNumberOfLights() {
+        System.out.println("Number of lights in "+roomName+" is "+numberOfLights);
+    }
 }

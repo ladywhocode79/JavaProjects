@@ -9,4 +9,9 @@ public class LivingRoom extends Home{
         this.roomName = "Living Room";
     }
 
+    //to give number of lights
+    public void getNumberOfLights() {
+        System.out.println("Number of lights in "+roomName+" is "+numberOfLights);
+    }
+
 }

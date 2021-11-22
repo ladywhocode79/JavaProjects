@@ -6,10 +6,5 @@ public class Home {
     int numberOfLights;
     String roomName;
 
-    //to give number of lights
-    public int getNumberOfLights() {
-        return numberOfLights;
-    }
-
 
 }
