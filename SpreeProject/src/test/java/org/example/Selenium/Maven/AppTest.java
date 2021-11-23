@@ -1,7 +1,7 @@
 package org.example.Selenium.Maven;
 
 
-import POM.*;
+import org.example.Selenium.Maven.POM.*;
 import org.testng.annotations.Test;
 
 /**

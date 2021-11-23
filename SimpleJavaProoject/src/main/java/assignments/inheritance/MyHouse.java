@@ -12,7 +12,7 @@ public class MyHouse {
         DrawingRoom drawingRoom = new DrawingRoom(4);
        LivingRoom livingRoom = new LivingRoom(3);
        MasterBedRoom masterBedRoom = new MasterBedRoom(3);
-      KidsBedRoom kidsBedRoom = new KidsBedRoom(2);
+     KidsBedRoom kidsBedRoom = new KidsBedRoom(2);
 
         //get room  lights
         drawingRoom.getNumberOfLights();

@@ -1,12 +1,11 @@
 package assignments.inheritance;
 
 //subclass of parent class Home
-public class KidsBedRoom extends Home{
+public class KidsBedRoom extends Room {
 
     //parametrized constructor to set number of lights in a room and name
     KidsBedRoom(int noOfLights){
-        this.numberOfLights = noOfLights;
-        this.roomName ="Kids Bed room";
+        super("kids room",noOfLights);
     }
     //to give number of lights
     public void getNumberOfLights() {
