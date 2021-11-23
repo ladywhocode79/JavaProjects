@@ -1,18 +1,18 @@
 package classassignments;
 
+import io.restassured.http.ContentType;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class getLogOfResponseRequest {
+public class GetContentType {
     @Test
-    public void testLogAll(){
+    public void testGetContentType(){
         given().
-                log().all().
                 when().
                 get("http://api.bart.gov/api/route.aspx?cmd=routes&key=MW9S-E7SL-26DU-VV8V&json=y").
-                then().log()
-                        .body();
+                then().assertThat().contentType(ContentType.JSON);
 
     }
+
 }

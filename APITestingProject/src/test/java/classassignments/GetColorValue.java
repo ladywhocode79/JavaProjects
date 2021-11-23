@@ -5,7 +5,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class getColorValue {
+public class GetColorValue {
     @Test
     public void testGetStationDataOn15thAprilAndValidateForStatusCode(){
         given().
