@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.Assert;
 
 public class OrderPage {
@@ -12,7 +13,11 @@ public class OrderPage {
     private WebElement orderConfirmationMessage;
 
     public OrderPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
+
+
+        //will wait till all elements are found
+        PageFactory.initElements(new AjaxElementLocatorFactory
+                (driver,2), this);
     }
     public void orderConfirmation(){
         //check for orde successful message

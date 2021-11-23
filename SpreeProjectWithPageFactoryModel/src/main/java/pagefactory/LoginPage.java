@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class LoginPage {
 
@@ -20,9 +21,13 @@ public class LoginPage {
 
 
     public LoginPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
+
+        //will wait till all elements are found
+        PageFactory.initElements(new AjaxElementLocatorFactory
+                (driver,2), this);
     }
     public void loginToSpree(String email,String password){
+        //driver.manage().window().fullscreen();
         //email
         emailText.sendKeys(email);
         //password..

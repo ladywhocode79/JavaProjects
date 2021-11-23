@@ -8,8 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginToCheckoutTest extends BaseTest{
     @Test
     //flow to select category from drop down list and search
-    public void loginNAddProductToCart()
-    {
+    public void loginNAddProductToCart() throws Exception {
         System.out.println("Flow to select category from drop down list and search");
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -20,7 +19,7 @@ public class LoginToCheckoutTest extends BaseTest{
         OrderPage orderPage = new OrderPage(driver);
 
         //variables to store email and password
-        String email = "simple00123@dd.com";
+        String email = "add123@dd.com";
         String password = "2345678";
         //click on login link on home page
         homePage.clickOnLogin();
@@ -45,7 +44,7 @@ public class LoginToCheckoutTest extends BaseTest{
         //printing actual total
         System.out.println("Actual Order total : " +orderTotal);
         //add billing address
-        checkOutPage.addBillingAddress();
+        checkOutPage.addBillingAddress(driver);
         //select shipping value
         checkOutPage.addShippingMethod();
         //select payment method and place order

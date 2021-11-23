@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.Assert;
 
 public class HomePage {
@@ -14,8 +15,12 @@ public class HomePage {
     @FindBy(css = "div[class=\"alert alert-success\"]")
     private WebElement sucessfulMessage;
 
-    public HomePage(WebDriver driver){
-        PageFactory.initElements(driver, this);
+    public HomePage(WebDriver driver)
+    {
+
+        //will wait till all elements are found
+        PageFactory.initElements(new AjaxElementLocatorFactory
+                (driver,2), this);
     }
 
     public void clickOnLogin(){
