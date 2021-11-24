@@ -11,6 +11,7 @@ public class UserDataClass {
     private String phone;
     private int userStatus;
 
+
     //getter and setters methods
 
     public int getId() {
@@ -76,5 +77,6 @@ public class UserDataClass {
     public void setUserStatus(int userStatus) {
         this.userStatus = userStatus;
     }
+
 
 }

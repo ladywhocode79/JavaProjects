@@ -12,6 +12,8 @@ import io.restassured.http.ContentType;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static io.restassured.RestAssured.given;
 
 public class VerifyCreateUserScenario {
@@ -44,8 +46,10 @@ public class VerifyCreateUserScenario {
     }
     @Test
     public void createUsers(){
+        ArrayList<UserDataClass> userList=new ArrayList<UserDataClass>();//Creating arraylist
         UserDataClass userDataDetails = new UserDataClass();
-        UserCreationResponseDetails userCreationResponseDetails = new UserCreationResponseDetails();
+        UserCreationResponseDetails userCreationResponseDetails = new UserCreationResponseDetails() ;
+        //first user object data
         userDataDetails.setId(0);
         userDataDetails.setUsername("ssds");
         userDataDetails.setFirstName("Sonal");
@@ -54,17 +58,28 @@ public class VerifyCreateUserScenario {
         userDataDetails.setPassword("123456");
         userDataDetails.setPhone("444-00-444");
         userDataDetails.setUserStatus(0);
+        userList.add(userDataDetails);
 
+        //second user object data
+        userDataDetails.setId(0);
+        userDataDetails.setUsername("ssess");
+        userDataDetails.setFirstName("Sonali");
+        userDataDetails.setLastName("Singh");
+        userDataDetails.setEmail("ssde@ss.com");
+        userDataDetails.setPassword("123456");
+        userDataDetails.setPhone("444-060-444");
+        userDataDetails.setUserStatus(0);
+        userList.add(userDataDetails);
         userCreationResponseDetails =
                 given().
                         contentType(ContentType.JSON).
-                        body(userDataDetails).
+                        body(userList).
                         log().body().
                         when().
-                        post("https://petstore.swagger.io/v2/user").
+                        post("https://petstore.swagger.io/v2/user/createWithArray").
                         as(UserCreationResponseDetails.class);
 
-        System.out.println("Checking response after user creation: "+userCreationResponseDetails.toString());
+        System.out.println("Checking response after users creation: "+userCreationResponseDetails.toString());
         Assert.assertEquals(200,userCreationResponseDetails.getCode());
 
     }
