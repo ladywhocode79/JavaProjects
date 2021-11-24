@@ -1,6 +1,7 @@
 package pagefactory;
 
 import com.google.common.io.Files;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,6 +11,7 @@ import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.sql.Timestamp;
@@ -17,34 +19,22 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Util {
-    /**
-     * This function will take screenshot
-     *
-     * @param driver
-     * @param fileWithPath
-     * @throws Exception
-     */
-    public static void takeSnapShot(WebDriver driver,String pageName)
+
+    public static String takeSnapShot(WebDriver driver,String pageName)
             throws Exception {
         //Convert web driver object to TakeScreenshot
         TakesScreenshot screenShot = ((TakesScreenshot) driver);
         //Call getScreenshotAs method to create image file
         File sourceFile = screenShot.getScreenshotAs(OutputType.FILE);
 
+        String screenShotPath = System.getProperty("user.dir")+"/Screenshots" +
+                "/"+pageName+System.currentTimeMillis()+".jpg";
+        File destFile = new File(screenShotPath);
+        FileUtils.copyFile(sourceFile, destFile);
 
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String fileWithPath = "./screenshots/";
-        String filename=pageName+timestamp+".png";
-        System.out.println(filename);
-
-        //Move image file to new destination
-        File DestFile = new File(fileWithPath+filename);
-        //Copy file at destination
-        // Files.copyFile(sourceFile, DestFile);
-        Files.copy(sourceFile, DestFile);
-        System.out.println("Successfully captured a screenshot");
+        return screenShotPath;
     }
-
+/*
     public static void takeFullScreenShot(WebDriver driver,String pageName)
             throws Exception {
 
@@ -62,6 +52,6 @@ public class Util {
         String filename=pageName+timestamp+".jpg";
 
         ImageIO.write(screenshot.getImage(), "jpg", new File(fileWithPath+filename));
-    }
+    }*/
 
 }

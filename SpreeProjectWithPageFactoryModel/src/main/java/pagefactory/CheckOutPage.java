@@ -86,7 +86,7 @@ public class CheckOutPage extends Util{
         return orderTotal;
     }
 
-    public void addBillingAddress(WebDriver driver) throws Exception {
+    public void addBillingAddress()  {
         //exception will come when user already have billing address and below options
         // will not be available
 

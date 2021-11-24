@@ -43,7 +43,12 @@
       <artifactId>ashot</artifactId>
       <version>1.5.4</version>
     </dependency>
-
+    <!--Test reporting library - extent 3.X-->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>3.1.5</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -19,7 +19,7 @@ public class LoginToCheckoutTest extends BaseTest{
         OrderPage orderPage = new OrderPage(driver);
 
         //variables to store email and password
-        String email = "add123@dd.com";
+        String email = "abcss@ss.com";
         String password = "2345678";
         //click on login link on home page
         homePage.clickOnLogin();
@@ -42,9 +42,9 @@ public class LoginToCheckoutTest extends BaseTest{
         shoppingCartPage.checkOut();
         String orderTotal= checkOutPage.returnOrderTotalValue();
         //printing actual total
-        System.out.println("Actual Order total : " +orderTotal);
+       // System.out.println("Actual Order total : " +orderTotal);
         //add billing address
-        checkOutPage.addBillingAddress(driver);
+        checkOutPage.addBillingAddress();
         //select shipping value
         checkOutPage.addShippingMethod();
         //select payment method and place order
