@@ -42,7 +42,7 @@ public class CreateUser {
         createUser.setName(name);
         createUser.setJob(job);
 
-        CreatedUserDetails userDetails = new CreatedUserDetails();
+        CreatedUserDetails userDetails ;
         userDetails =
          given().
                 contentType(ContentType.JSON).
