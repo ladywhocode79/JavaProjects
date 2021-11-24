@@ -70,8 +70,11 @@ public class BaseTest {
         if(result.getStatus() == ITestResult.FAILURE) {
 
             filePath =takeSnapShot(driver,"Order_placed_page_failed");
+            System.out.println(filePath);
             extentTest.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+" FAILED ", ExtentColor.RED));
             extentTest.fail(result.getThrowable());
+            //add screenshot to the test report
+            extentTest.addScreenCaptureFromPath(filePath);
             //to write or update test information to reporter
             extentReports.flush();
         }
@@ -79,6 +82,9 @@ public class BaseTest {
             extentTest.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" " +
                     "PASSED ", ExtentColor.GREEN));
             filePath =takeSnapShot(driver,"Order_placed_page_passed");
+            System.out.println(filePath);
+            //add screenshot to the test report
+            extentTest.addScreenCaptureFromPath(filePath);
             //to write or update test information to reporter
             extentReports.flush();
         }
