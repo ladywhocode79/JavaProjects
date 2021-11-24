@@ -7,7 +7,7 @@ Hint: try Try it out and execute buttons. This will help you get the total url a
 
 import assignments.data.UserCreationResponseDetails;
 import assignments.data.UserDataClass;
-import classassignments.pojoclassassignment.data.CreatedUserDetails;
+
 import io.restassured.http.ContentType;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,6 +20,8 @@ public class VerifyCreateUserScenario {
     //https://petstore.swagger.io/v2/user
     @Test
     public void createUser(){
+        //create single user
+        //https://petstore.swagger.io/v2/user
         UserDataClass userDataDetails = new UserDataClass();
         UserCreationResponseDetails userCreationResponseDetails = new UserCreationResponseDetails();
         userDataDetails.setId(0);
@@ -46,9 +48,11 @@ public class VerifyCreateUserScenario {
     }
     @Test
     public void createUsers(){
+        //create multiple users
+        //https://petstore.swagger.io/v2/user/createWithArray
         ArrayList<UserDataClass> userList=new ArrayList<UserDataClass>();//Creating arraylist
         UserDataClass userDataDetails = new UserDataClass();
-        UserCreationResponseDetails userCreationResponseDetails = new UserCreationResponseDetails() ;
+        UserCreationResponseDetails userCreationResponseDetails  ;
         //first user object data
         userDataDetails.setId(0);
         userDataDetails.setUsername("ssds");
