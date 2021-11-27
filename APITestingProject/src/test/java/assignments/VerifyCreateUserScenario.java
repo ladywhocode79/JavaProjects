@@ -51,29 +51,30 @@ public class VerifyCreateUserScenario {
         //create multiple users
         //https://petstore.swagger.io/v2/user/createWithArray
         ArrayList<UserDataClass> userList=new ArrayList<UserDataClass>();//Creating arraylist
-        UserDataClass userDataDetails = new UserDataClass();
+        UserDataClass userOneDataDetails = new UserDataClass();
+        UserDataClass userTwoDataDetails = new UserDataClass();
         UserCreationResponseDetails userCreationResponseDetails  ;
         //first user object data
-        userDataDetails.setId(0);
-        userDataDetails.setUsername("ssds");
-        userDataDetails.setFirstName("Sonal");
-        userDataDetails.setLastName("Singh");
-        userDataDetails.setEmail("ssd@ss.com");
-        userDataDetails.setPassword("123456");
-        userDataDetails.setPhone("444-00-444");
-        userDataDetails.setUserStatus(0);
-        userList.add(userDataDetails);
+        userOneDataDetails.setId(0);
+        userOneDataDetails.setUsername("ssds");
+        userOneDataDetails.setFirstName("Sonal");
+        userOneDataDetails.setLastName("Singh");
+        userOneDataDetails.setEmail("ssd@ss.com");
+        userOneDataDetails.setPassword("123456");
+        userOneDataDetails.setPhone("444-00-444");
+        userOneDataDetails.setUserStatus(0);
+        userList.add(userOneDataDetails);
 
         //second user object data
-        userDataDetails.setId(0);
-        userDataDetails.setUsername("ssess");
-        userDataDetails.setFirstName("Sonali");
-        userDataDetails.setLastName("Singh");
-        userDataDetails.setEmail("ssde@ss.com");
-        userDataDetails.setPassword("123456");
-        userDataDetails.setPhone("444-060-444");
-        userDataDetails.setUserStatus(0);
-        userList.add(userDataDetails);
+        userTwoDataDetails.setId(0);
+        userTwoDataDetails.setUsername("ssess");
+        userTwoDataDetails.setFirstName("Sonali");
+        userTwoDataDetails.setLastName("Singh");
+        userTwoDataDetails.setEmail("ssde@ss.com");
+        userTwoDataDetails.setPassword("123456");
+        userTwoDataDetails.setPhone("444-060-444");
+        userTwoDataDetails.setUserStatus(0);
+        userList.add(userTwoDataDetails);
         userCreationResponseDetails =
                 given().
                         contentType(ContentType.JSON).
