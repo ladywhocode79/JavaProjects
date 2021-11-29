@@ -7,14 +7,10 @@ Hint: try Try it out and execute buttons. This will help you get the total url a
 
 import assignments.data.UserCreationResponseDetails;
 import assignments.data.UserDataClass;
-
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
-
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -62,7 +58,6 @@ public class VerifyCreateUserScenario {
         //verify lastname from response equals to lastname fetched in response of GET method
         String lastName = userDetailsJsonPath.getString("lastName");
         Assert.assertEquals(userDataDetails.getLastName(),lastName);
-
 
     }
 
