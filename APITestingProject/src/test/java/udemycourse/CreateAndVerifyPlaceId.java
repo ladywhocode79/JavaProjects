@@ -2,36 +2,41 @@ package udemycourse;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import org.junit.Test;
 
 
+
 import static io.restassured.RestAssured.*;
+import static udemycourse.payload.Payload.payloadForCreateUser;
+import static org.hamcrest.Matchers.*;
 
 public class CreateAndVerifyPlaceId {
   @Test
   public void createAndVerifyPlaceId(){
     //base url address of api server
     baseURI ="https://rahulshettyacademy.com/";
-    given().log().all().queryParam("key","qaclick123").
+  /* String response = given().log().all().queryParam("key","qaclick123").
             header("Content-Type","application/json").
-            body("{\n" +
-                    "  \"location\": {\n" +
-                    "    \"lat\": -38.383494,\n" +
-                    "    \"lng\": 33.427362\n" +
-                    "  },\n" +
-                    "  \"accuracy\": 50,\n" +
-                    "  \"name\": \"Frontline house\",\n" +
-                    "  \"phone_number\": \"(+91) 983 893 3937\",\n" +
-                    "  \"address\": \"29, side layout, cohen 09\",\n" +
-                    "  \"types\": [\n" +
-                    "    \"shoe park\",\n" +
-                    "    \"shop\"\n" +
-                    "  ],\n" +
-                    "  \"website\": \"http://google.com\",\n" +
-                    "  \"language\": \"French-IN\"\n" +
-                    "}\n").
+            body(payloadForCreateUser()).
             when().post("/maps/api/place/add/json").
-            then().log().all().assertThat().statusCode(200);
+            then().log().all().assertThat().statusCode(200).
+    body("scope",equalTo("APP")).
+    extract().response().asString();*/
+    String response = given().log().all().queryParam("key","qaclick123").
+            header("Content-Type","application/json").
+            body(payloadForCreateUser()).
+            when().post("/maps/api/place/add/json").
+            then().assertThat().statusCode(200).
+            body("scope",equalTo("APP")).
+            extract().response().asString();
+    //took response as string and now extract response value place_id
+    System.out.printf(response);
+    JsonPath jsonPath = new JsonPath(response); //parse Json
+    String placeId = jsonPath.get("place_id");
+    System.out.printf("place id: "+placeId);
+
+
 
   }
 
