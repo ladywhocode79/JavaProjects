@@ -1,14 +1,18 @@
 package udemycourse;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+/*1.Create place using create payload and extract response in a string.We use POST method here
+ * 2.Take out place_id from string response using JsonPath class which parses the JSON string and returns
+ * the required place_id
+ * 3.Use this place_id to update address of place using put method.
+ * 4.To verify that address is updated use placeid and fetch data using GET method */
 import io.restassured.path.json.JsonPath;
+import org.junit.Assert;
 import org.junit.Test;
-
+import udemycourse.util.ReusableMethods;
 
 
 import static io.restassured.RestAssured.*;
-import static udemycourse.payload.Payload.payloadForCreateUser;
+import static udemycourse.util.Payload.payloadForCreateUser;
 import static org.hamcrest.Matchers.*;
 
 public class CreateAndVerifyPlaceId {
@@ -23,7 +27,7 @@ public class CreateAndVerifyPlaceId {
             then().log().all().assertThat().statusCode(200).
     body("scope",equalTo("APP")).
     extract().response().asString();*/
-    String response = given().log().all().queryParam("key","qaclick123").
+    String postRequestResponse = given().log().all().queryParam("key","qaclick123").
             header("Content-Type","application/json").
             body(payloadForCreateUser()).
             when().post("/maps/api/place/add/json").
@@ -31,10 +35,34 @@ public class CreateAndVerifyPlaceId {
             body("scope",equalTo("APP")).
             extract().response().asString();
     //took response as string and now extract response value place_id
-    System.out.printf(response);
-    JsonPath jsonPath = new JsonPath(response); //parse Json
+    //System.out.printf(postRequestResponse);
+    JsonPath jsonPath = ReusableMethods.rawToJson(postRequestResponse); //parse Json
     String placeId = jsonPath.get("place_id");
-    System.out.printf("place id: "+placeId);
+    System.out.println("place id: "+placeId);
+
+    //to update address of place id received above.
+    String newAddress = "76 winter walk, USA";
+    given().log().all().queryParam("key","qaclick123").
+            body("{\n" +
+                    "\"place_id\":\""+placeId+"\",\n" +
+                    "\"address\":\""+newAddress+"\",\n" +
+                    "\"key\":\"qaclick123\"\n" +
+                    "}").log().all().
+            when().put("/maps/api/place/update/json").
+            then().assertThat().statusCode(200).
+            body("msg",equalTo("Address successfully updated"));
+
+    //to verify whether address is updated
+    String putRequestResponse=given().log().all().queryParam("key","qaclick123").
+            queryParam("place_id",placeId).log().all().
+            when().get("maps/api/place/get/json").
+            then().assertThat().log().all().statusCode(200).extract().response().asString();
+
+
+    JsonPath updatedJson=ReusableMethods.rawToJson(putRequestResponse);
+    String actualAddress = updatedJson.getString("address");
+    System.out.println(actualAddress);
+    Assert.assertEquals(newAddress,actualAddress);
 
 
 

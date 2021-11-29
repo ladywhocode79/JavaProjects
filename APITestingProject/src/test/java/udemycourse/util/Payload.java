@@ -1,4 +1,4 @@
-package udemycourse.payload;
+package udemycourse.util;
 
 public class Payload {
     public static String payloadForCreateUser(){
