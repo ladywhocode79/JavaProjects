@@ -11,7 +11,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.annotations.*;
 
 import static pagefactory.Util.takeSnapShot;
@@ -46,7 +45,7 @@ public class BaseTest {
         htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
 
-         extentTest =extentReports.createTest("Order Completion");
+        extentTest =extentReports.createTest("Order Completion");
         extentTest.log(Status.INFO, "Execution started.");
     }
 
@@ -93,30 +92,6 @@ public class BaseTest {
                     result.getName()+" SKIPPED ", ExtentColor.ORANGE));
             extentTest.skip(result.getThrowable());
         }
-
-
-        //using ITestResult.FAILURE is equals to result.getStatus
-        // then it enter into if condition
-       /* String filePath;
-        String path = "<img src=\"\\\"file://\"\" alt=\"\\\"\\\"/\" />";
-        if(ITestResult.FAILURE==result.getStatus()){
-            try{
-               filePath =takeSnapShot(driver,"Order_placed_page_failed");
-                Reporter.log(path);
-                System.out.println("Successfully captured a screenshot for failed testcase");
-            }
-            catch (Exception e){
-                System.out.println("Exception while taking screenshot "+e.getMessage());
-            }
-        }else{
-            try {
-                takeSnapShot(driver,"Order_placed_page_passed");
-                System.out.println("Successfully captured a screenshot for passed testcase");
-                Reporter.log(path);
-            } catch (Exception e) {
-                System.out.println("Exception while taking screenshot "+e.getMessage());
-            }
-          }*/
         driver.close();
     }
 

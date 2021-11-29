@@ -42,7 +42,7 @@ public class LoginToCheckoutTest extends BaseTest{
         shoppingCartPage.checkOut();
         String orderTotal= checkOutPage.returnOrderTotalValue();
         //printing actual total
-       // System.out.println("Actual Order total : " +orderTotal);
+        // System.out.println("Actual Order total : " +orderTotal);
         //add billing address
         checkOutPage.addBillingAddress();
         //select shipping value

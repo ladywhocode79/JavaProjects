@@ -1,6 +1,4 @@
 package pagefactory;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,16 +11,12 @@ public class ShoppingCartPage {
     private WebElement checkout;
 
     public ShoppingCartPage(WebDriver driver) {
-
-
         //will wait till all elements are found
         PageFactory.initElements(new AjaxElementLocatorFactory
                 (driver,2), this);
     }
-
     public void checkOut(){
         //click on checkout
         checkout.click();
-
     }
 }

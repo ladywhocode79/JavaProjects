@@ -13,14 +13,12 @@ public class OrderPage {
     private WebElement orderConfirmationMessage;
 
     public OrderPage(WebDriver driver){
-
-
         //will wait till all elements are found
         PageFactory.initElements(new AjaxElementLocatorFactory
                 (driver,2), this);
     }
     public void orderConfirmation(){
-        //check for orde successful message
+        //check for order successful message
         String expectedOrderConfirmationMessage ="Your order has been processed successfully";
         String actualOrderConfirmationMessage =orderConfirmationMessage.getText();
         Assert.assertEquals(actualOrderConfirmationMessage,expectedOrderConfirmationMessage,

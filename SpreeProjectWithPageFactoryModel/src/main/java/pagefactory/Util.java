@@ -1,22 +1,8 @@
 package pagefactory;
 
-import com.google.common.io.Files;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.Select;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-
-
-import javax.imageio.ImageIO;
 import java.io.File;
-import java.sql.Timestamp;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class Util {
 

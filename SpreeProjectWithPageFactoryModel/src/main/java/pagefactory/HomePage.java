@@ -9,11 +9,11 @@ import org.testng.Assert;
 
 public class HomePage {
 
-   //define and locate web element
+    //define and locate web element
     @FindBy(css = "[class='nav-link text-white']")
     private WebElement clickLoginButton;
     @FindBy(css = "div[class=\"alert alert-success\"]")
-    private WebElement sucessfulMessage;
+    private WebElement successfulMessage;
 
     public HomePage(WebDriver driver)
     {
@@ -29,7 +29,7 @@ public class HomePage {
     }
     public void verifyLoginSuccessful(){
         String expectedMessage="Logged in successfully";
-        String successMessage=sucessfulMessage.getText();
+        String successMessage= successfulMessage.getText();
         Assert.assertEquals(successMessage,expectedMessage,"Login message didn't match");
     }
 

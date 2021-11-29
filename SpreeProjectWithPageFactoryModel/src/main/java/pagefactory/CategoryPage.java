@@ -1,6 +1,5 @@
 package pagefactory;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,11 +13,11 @@ public class CategoryPage {
 
     //define and locate web element
     @FindBy(css = "a[href=\"/t/bags\"]")
-    private WebElement selectCategoryFromSide;
+    private WebElement selectCategoryBags;
     @FindBy(css = "span[title=\"Ruby on Rails Tote\"]")
-    private WebElement clickOnProductName;
+    private WebElement selectProductRuby;
     @FindBy(id = "taxon")
-    private WebElement dropDownElement;
+    private WebElement selectCategoryFromDropDown;
     @FindBy(css = "input[value='Search']")
     private WebElement clickOnSearch;
 
@@ -32,18 +31,18 @@ public class CategoryPage {
 
     public void searchNSelectInCategory(){
         //search in category and select first option from side menu
-        selectCategoryFromSide.click();
+        selectCategoryBags.click();
     }
     public void selectFromProducList(){
         //select from category
-        clickOnProductName.click();
+        selectProductRuby.click();
     }
     public void selectCategoryFromDropDown(){
         //to select items from drop down and click on search
-        WebElement dropdown = dropDownElement;
+        WebElement dropdown = selectCategoryFromDropDown;
         Select select = new Select(dropdown);
         select.selectByValue("1");
-        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
         //find the search button anc click to search
         clickOnSearch.click();;
 

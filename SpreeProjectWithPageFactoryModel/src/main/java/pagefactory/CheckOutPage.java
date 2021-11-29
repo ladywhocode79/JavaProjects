@@ -1,21 +1,14 @@
 package pagefactory;
-
-import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-
 import org.openqa.selenium.support.ui.Select;
-
 import org.testng.Assert;
 
 
-import java.io.File;
-
 public class CheckOutPage extends Util{
     //define and locate web element
-
     @FindBy(css = "span[id=\"summary-order-total\"]")
     private WebElement readOrderTotal;
     @FindBy(id = "add-to-cart-button")
@@ -81,33 +74,30 @@ public class CheckOutPage extends Util{
         String orderTotal = readOrderTotal.getText();
         //assert on cart total should be equal to expected result
         String expectedTotal = "$47.97";
-      //  Assert.assertEquals(orderTotal, expectedTotal, "Failed in comparison");
+        //  Assert.assertEquals(orderTotal, expectedTotal, "Failed in comparison");
         // System.out.println("Expected Order Total is :"+expectedTotal);
         return orderTotal;
     }
 
     public void addBillingAddress()  {
-        //exception will come when user already have billing address and below options
-        // will not be available
-
         //add billing address detail
         firstName.sendKeys("Sonal");
         lastName.sendKeys("Singh");
         addressOne.sendKeys("Address 1, 607 Street");
         addressTwo.sendKeys("Address 2 790");
         city.sendKeys("San Franciso");
+
         //to select items from drop down of state
         WebElement dropdownState = dropDownState;
         Select selectState = new Select(dropdownState);
         selectState.selectByValue("2822");
         zipcode.sendKeys("23344");
+
         //to select items from drop down of state
         WebElement dropdownCountry = dropDownCountry;
         Select selectCountry = new Select(dropdownCountry);
         selectCountry.selectByValue("233");
         phone.sendKeys("2334444");
-        //this.takeSnapShot(driver,"add_billing_page");
-
         saveBillingAddress.click();
         saveNContinueButton.click();
     }
@@ -119,7 +109,6 @@ public class CheckOutPage extends Util{
         String expectedShippingValue = "$10.00";
         String actualShippingValue = shippingTotal.getText();
         Assert.assertEquals(actualShippingValue, expectedShippingValue, "Selected shipping not matched");
-
 
         //verify order summary after adding shipping
         String expectedOrderSummary = "$60.37";
@@ -135,6 +124,5 @@ public class CheckOutPage extends Util{
         paymentMethodCheck.click();
         saveNContinueButton.click();
     }
-
 
 }
