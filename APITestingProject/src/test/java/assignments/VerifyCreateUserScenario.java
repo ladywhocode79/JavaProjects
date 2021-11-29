@@ -55,6 +55,7 @@ public class VerifyCreateUserScenario {
         UserDataClass userTwoDataDetails = new UserDataClass();
         UserCreationResponseDetails userCreationResponseDetails  ;
         //first user object data
+
         userOneDataDetails.setId(0);
         userOneDataDetails.setUsername("ssds");
         userOneDataDetails.setFirstName("Sonal");
@@ -75,6 +76,7 @@ public class VerifyCreateUserScenario {
         userTwoDataDetails.setPhone("444-060-444");
         userTwoDataDetails.setUserStatus(0);
         userList.add(userTwoDataDetails);
+
         userCreationResponseDetails =
                 given().
                         contentType(ContentType.JSON).
