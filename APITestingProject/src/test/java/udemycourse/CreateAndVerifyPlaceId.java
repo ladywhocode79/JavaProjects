@@ -27,7 +27,8 @@ public class CreateAndVerifyPlaceId {
             then().log().all().assertThat().statusCode(200).
     body("scope",equalTo("APP")).
     extract().response().asString();*/
-    String postRequestResponse = given().log().all().queryParam("key","qaclick123").
+    String key = "qaclick123";
+    String postRequestResponse = given().log().all().queryParam("key",key).
             header("Content-Type","application/json").
             body(payloadForCreateUser()).
             when().post("/maps/api/place/add/json").
@@ -42,18 +43,18 @@ public class CreateAndVerifyPlaceId {
 
     //to update address of place id received above.
     String newAddress = "76 winter walk, USA";
-    given().log().all().queryParam("key","qaclick123").
+    given().log().all().queryParam("key",key).
             body("{\n" +
                     "\"place_id\":\""+placeId+"\",\n" +
                     "\"address\":\""+newAddress+"\",\n" +
-                    "\"key\":\"qaclick123\"\n" +
+                    "\"key\":\""+key+"\"\n" +
                     "}").log().all().
             when().put("/maps/api/place/update/json").
             then().assertThat().statusCode(200).
             body("msg",equalTo("Address successfully updated"));
 
     //to verify whether address is updated
-    String putRequestResponse=given().log().all().queryParam("key","qaclick123").
+    String putRequestResponse=given().log().all().queryParam("key",key).
             queryParam("place_id",placeId).log().all().
             when().get("maps/api/place/get/json").
             then().assertThat().log().all().statusCode(200).extract().response().asString();

@@ -9,12 +9,15 @@ import assignments.data.UserCreationResponseDetails;
 import assignments.data.UserDataClass;
 
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class VerifyCreateUserScenario {
     //https://petstore.swagger.io/v2/user
@@ -22,10 +25,12 @@ public class VerifyCreateUserScenario {
     public void createUser(){
         //create single user
         //https://petstore.swagger.io/v2/user
+        baseURI ="https://petstore.swagger.io";
         UserDataClass userDataDetails = new UserDataClass();
         UserCreationResponseDetails userCreationResponseDetails = new UserCreationResponseDetails();
         userDataDetails.setId(0);
-        userDataDetails.setUsername("ssds");
+        userDataDetails.setUsername("sonaldds");
+        String userName = userDataDetails.getUsername();
         userDataDetails.setFirstName("Sonal");
         userDataDetails.setLastName("Singh");
         userDataDetails.setEmail("ssd@ss.com");
@@ -39,55 +44,26 @@ public class VerifyCreateUserScenario {
                         body(userDataDetails).
                         log().body().
                         when().
-                        post("https://petstore.swagger.io/v2/user").
+                        post("/v2/user").
                         as(UserCreationResponseDetails.class);
-
+        int statusCode = 200;
         System.out.println("Checking response after user creation: "+userCreationResponseDetails.toString());
-        Assert.assertEquals(200,userCreationResponseDetails.getCode());
+        //verify returned success status code as 200
+        Assert.assertEquals(statusCode,userCreationResponseDetails.getCode());
+
+        //verify that above user is created using GET method using username
+        String userDetails = given().log().all().
+                when().get("/v2/user/"+userName).then().assertThat().log().all().
+                body("username",equalTo(userName)).
+                body("firstName",equalTo(userDataDetails.getFirstName())).statusCode(200).
+                extract().response().asString();
+
+        JsonPath userDetailsJsonPath = new JsonPath(userDetails);
+        //verify lastname from response equals to lastname fetched in response of GET method
+        String lastName = userDetailsJsonPath.getString("lastName");
+        Assert.assertEquals(userDataDetails.getLastName(),lastName);
+
 
     }
-    @Test
-    public void createUsers(){
-        //create multiple users
-        //https://petstore.swagger.io/v2/user/createWithArray
-        ArrayList<UserDataClass> userList=new ArrayList<UserDataClass>();//Creating arraylist
-        UserDataClass userOneDataDetails = new UserDataClass();
-        UserDataClass userTwoDataDetails = new UserDataClass();
-        UserCreationResponseDetails userCreationResponseDetails  ;
-        //first user object data
 
-        userOneDataDetails.setId(0);
-        userOneDataDetails.setUsername("ssds");
-        userOneDataDetails.setFirstName("Sonal");
-        userOneDataDetails.setLastName("Singh");
-        userOneDataDetails.setEmail("ssd@ss.com");
-        userOneDataDetails.setPassword("123456");
-        userOneDataDetails.setPhone("444-00-444");
-        userOneDataDetails.setUserStatus(0);
-        userList.add(userOneDataDetails);
-
-        //second user object data
-        userTwoDataDetails.setId(0);
-        userTwoDataDetails.setUsername("ssess");
-        userTwoDataDetails.setFirstName("Sonali");
-        userTwoDataDetails.setLastName("Singh");
-        userTwoDataDetails.setEmail("ssde@ss.com");
-        userTwoDataDetails.setPassword("123456");
-        userTwoDataDetails.setPhone("444-060-444");
-        userTwoDataDetails.setUserStatus(0);
-        userList.add(userTwoDataDetails);
-
-        userCreationResponseDetails =
-                given().
-                        contentType(ContentType.JSON).
-                        body(userList).
-                        log().body().
-                        when().
-                        post("https://petstore.swagger.io/v2/user/createWithArray").
-                        as(UserCreationResponseDetails.class);
-
-        System.out.println("Checking response after users creation: "+userCreationResponseDetails.toString());
-        Assert.assertEquals(200,userCreationResponseDetails.getCode());
-
-    }
 }
