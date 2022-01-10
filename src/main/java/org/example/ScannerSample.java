@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Hello world!
  *
  */
-public class App 
+public class ScannerSample
 {
     public static void main( String[] args ) {
 
@@ -16,7 +16,7 @@ public class App
        double d = scan.nextDouble();
         scan.nextLine();
         String s=scan.nextLine();
-       // s = s+scan.nextLine();
+     //   s = s+scan.nextLine();
 
 
         // Write your code here.
